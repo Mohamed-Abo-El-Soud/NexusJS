@@ -1,0 +1,127 @@
+.base {
+  background-color: $primary-color !important;
+}
+.bright {
+  background-color: $primary-color-light !important;
+}
+.dark {
+  background-color: $primary-color-dark !important;
+}
+.accent {
+  background-color: $secondary-color !important;
+}
+.text-primary {
+  color: $primary-text-color !important;
+}
+.text-secondary {
+  color: $secondary-text-color !important;
+}
+.text-primary-light {
+  color: $primary-text-color-light !important;
+}
+.text-secondary-light {
+  color: $secondary-text-color-light !important;
+}
+.text-accent {
+  color: $secondary-color !important;
+}
+.link {
+  color: $link-color !important;
+}
+
+
+// styling for the debug box
+
+@mixin box_sizing {
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:         border-box;
+}
+.debug_dump {
+  clear: both;
+  // float: left;
+  width: 100%;
+  // margin-top: 45px;
+  position: fixed;
+  bottom: 10px;
+  padding: 30px;
+  @include box_sizing;
+  @extend .container;
+  // @extend .bright;
+  @extend .card;
+  @extend .center-align;
+  background: rgba(color("shades", "white"), 0.8);
+  
+  &:hover {
+    background: rgba(color("shades", "white"), 0.2);
+  }
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 150, 136, 0.4);
+}
+img {
+  object-fit: cover;
+  object-position: 0% 20%;
+}
+.fw300 {
+  font-weight: 300;
+}
+.card {
+  color: rgba(0,0,0,0.87);
+  line-height: 1.5;
+  margin: 0px;
+  transition: all 0.2s;
+}
+.huge {
+    font-size: 80px;
+}
+/* nav fixes for materialize */
+label {
+  /* overrides the default font color of labels to white */
+  // font-size: 1rem;
+  /* overrides the default font size of labels of 0.8em in materialize.css */
+  // color: white;
+  /* makes the search the cursor a pointer when it hovers over search icon */
+  // cursor: pointer;
+}
+// fixes for the dropdown window
+.dropdown-content.window{
+  // width: $options-window-width !important;
+  min-width: $options-window-width;
+  
+}
+.slab-font {
+    font-family: "Antic Slab", serif;
+}
+@mixin visibility($bool) {
+  @if $bool == 1 {
+    visibility: visible;
+    } @else {
+    visibility: hidden;
+    }
+  opacity: $bool;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+.toast {
+  // @extend .dark, .text-primary
+}
+
+.side-nav li a i.material-icons{
+  padding: 18px 0px;
+}

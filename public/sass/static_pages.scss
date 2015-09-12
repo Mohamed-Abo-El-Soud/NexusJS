@@ -1,0 +1,120 @@
+// Place all the styles related to the StaticPages controller here.
+// They will automatically be included in application.scss.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+/* ************* formatting for messages ************* */
+.messages {
+  @media only screen and (max-width: 603px) {
+    .container {
+      width: 100%;
+    }
+  }
+  .collection {
+    margin: 0px;
+    border: 0px;
+    overflow: visible;
+    .secondary-content {
+      top: 16px;
+      right: 16px;
+    }
+    .collection-item.avatar {
+      border-bottom: 1px solid #e0e0e0;
+      .title {
+        color: rgba(0, 0, 0, 0.87);
+      }
+    }
+  }
+}
+
+/* ************* end formatting for messages ************* */
+/* ************* formatting for sidenav ************* */
+.side-nav#mobile-demo {
+  .card-image {
+    max-height: 250px;
+  }
+  /* styling for the card title */
+  .card-title {
+    top: -10px;
+  }
+  .section {
+    padding: 0 15px;
+  }
+}
+
+/* ************* end formatting for sidenav ************* */
+/* ************* formatting for navbar ************* */
+.navbar-fixed {
+  nav {
+    ul li a {
+      /* pack tablet menu icons closer together */
+      padding: 0px 8px;
+    }
+    a label {
+      /* search icon resizing */
+      font-size: 1rem;
+      /* search icon coloring */
+      color: $primary-text-color-light;
+    }
+  }
+}
+
+/* ************* end formatting for navbar ************* */
+/* ************* formatting for options ************* */
+#options {
+  // position: absolute;
+  position: relative;
+  // top: 7px;
+  // right: 10px;
+  $optionsWidth: 320px;
+  $cardImgHeight: 150px;
+  // @include visibility(0);
+  &.active {
+    /* make window visible */
+    // @include visibility(1);
+  }
+  img {
+    max-height: $cardImgHeight;
+    // max-width: $optionsWidth;
+  }
+  .overlay {
+    max-height: $cardImgHeight;
+  }
+  .card-content {
+    max-width: $optionsWidth;
+  }
+  @media only screen and (max-width: 600px) {
+    display: none;
+  }
+}
+
+/* ************* end formatting for options ************* */
+/* ************* formatting for search bar ************* */
+form#search-form {
+  /* visibility hides the bar */
+  @include visibility(0);
+  transition: all 0.2s;
+  /* absolute positioning and padding to occupy minimal space */
+  position: absolute;
+  padding: 0px;
+  /* to cover the collapse button */
+  z-index: 1;
+  color: #444;
+  &.active {
+    /* transition of search bar to visible */
+    @include visibility(1);
+  }
+  input[type="search"] {
+    /* general appearance settings */
+    ~ button[type="reset"] {
+      position: absolute;
+      top: 0;
+      right: 1rem;
+      background: none;
+      border: none;
+    }
+  }
+}
+
+/* ************* end formatting for search bar ************* */

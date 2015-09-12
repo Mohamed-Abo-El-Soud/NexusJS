@@ -1,49 +1,24 @@
 var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var sassMiddleware = require("node-sass-middleware");
 
 // router stuff
-var router = require("./routes/router");
+var routes = require('./routes');
+// view module
+var views = require("./views");
 
 var app = express();
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
-
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-// adding the sass middleware
-app.use(
-   sassMiddleware({
-       src: __dirname + '/sass', 
-       dest: __dirname + '/public',
-       debug: true,       
-   })
-);
-app.use(express.static(path.join(__dirname, 'public')));
-// more sass middleware (for materialize)
-// app.use(sassMiddleware({
-//     /* Options */
-//     src: __dirname,
-//     dest: path.join(__dirname, 'public'),
-//     debug: true,
-//     outputStyle: 'compressed',
-//     prefix:  '/prefix'  // Where prefix is at <link rel="stylesheets" href="prefix/style.css"/>
-// }));
-// app.use('/modules', express.static(path.join(__dirname, 'node_modules')));
-
-// router stuff cont.
-app.use('/',router);
+// set all view configurations with one call
+views(app,__dirname);
+// We set all the routes with one single call
+routes(app);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

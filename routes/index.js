@@ -1,10 +1,20 @@
-var express = require('express');
-var router = express.Router();
+//controllers...
+var static_pages = require("../controllers/static_pages");
+
+var routes = {};
+
+routes["/"] = { controller: static_pages, action: "home" };
+routes["/contact"] = { controller: static_pages, action: "contact" };
+routes["/about"] = { controller: static_pages, action: "about" };
+routes["/help"] = { controller: static_pages, action: "help" };
 
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Nexus' });
-});
-
-module.exports = router;
+module.exports = function(app) {
+    for (var path in routes) {
+        (function(item){
+            app.get(path, function(req, res, next) {
+                item.controller(app,item.action, req, res, next);
+            });
+        })(routes[path]);
+    }
+};
