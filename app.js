@@ -4,9 +4,11 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 // router stuff
-var routes = require('./routes');
-// view module
-var views = require("./views");
+var routes = require('./app/routes');
+// views module
+var views = require("./app/views");
+// models module
+var models = require("./app/models");
 
 var app = express();
 
@@ -19,6 +21,8 @@ app.use(cookieParser());
 views(app,__dirname);
 // We set all the routes with one single call
 routes(app);
+// set up the models stuff
+// models(app);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
