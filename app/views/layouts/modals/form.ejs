@@ -1,0 +1,78 @@
+<%# unchanged: (boolean) show an "unchanged" placeholder over the password input field %>
+<%# id: (string) id field for styling and javascript %>
+<%# subject: (object) the object that the form submits info to %>
+<%# title: (string) title of the form %>
+<%# link: (string/html) the content of the save button (inside the "a" tag) %>
+
+<!-- the "sign-up-form" id is used in the JQuery function in static_pages.coffee -->
+<% form_tag(subject, {class: "col s12", id: id}) %>
+<%# form_for(subject, html: {class: "col s12", id: id}) do |f| %>
+    <div class="modal-content">
+      <h4><%= title %></h4>
+	  <%- include("../../shared/errorMessages", {subject: subject}) -%>
+      <div class="row">
+        <div class="input-field col s12 m6">
+          <label class="active" for="first_name">First name</label>
+          <%= text_field_tag("account_first_name",{class: "validate", id: "account_first_name", name: "account[first_name]"}) %>
+        </div>
+        <div class="input-field col s12 m6">
+          <label class="active" for="last_name">Last name</label>
+          <%= text_field_tag("account_last_name",{class: "validate", id: "account_last_name", name: "account[last_name]"}) %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">account_circle</i>
+          <label class="active" for="account_email">Email</label>
+          <%= text_field_tag("account_email",{class: "validate",
+                                              type: "email",
+                                              id: "account_email",
+                                              name: "account[email]"}) %>
+        </div>
+      </div>
+      <div class="row" id="password-input">
+        <div id="shown" class="input-field col s12">
+          <i class="material-icons prefix">vpn_key</i>
+          <label class="active" for="account_password">Password</label>
+          <%= password_field_tag("account_password",{class: "validate",
+                                                    name: "account[password]",
+                                                    placeholder: is_unchanged(unchanged)}) %>
+        </div>
+        <div id="hidden" class="input-field col s12 hide">
+          <label class="active" for="account_password_confirmation">Enter the password again</label>
+          <%= password_field_tag("account_password_confirmation",{class: "validate",
+                                                    name: "account[password_confirmation]",
+                                                    placeholder: is_unchanged(unchanged)}) %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">phone</i>
+          <label class="active" for="account_telephone">Telephone</label>
+          <%= text_field_tag("account_telephone",{class: "validate",
+                                                  type: "telephone",
+                                                  name: "account[telephone]"}) %>
+        </div>
+      </div>
+      <% if !subject.email.blank? %>
+        <div class="row">
+          <div class="input-field col s12 m6 card hoverable">
+            <div class="card-image">
+              <%= gravatar_for subject %>
+            </div>
+            <div class="card-content">
+              <a class="btn-flat accent col s12 center-align row" 
+                 href="http://gravatar.com/emails" target="_blank">change</a>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="modal-footer">
+      <%= link_to(link, "#",
+                  {onClick: "$(this).closest('form.col.s12').submit()", id: "save-button",
+                  class: "modal-action modal-close waves-effect waves-green btn-flat"}) %>
+      <a href="#!" id="cancel-button" 
+         class=" modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+    </div>
+<% form_tag_end() %>

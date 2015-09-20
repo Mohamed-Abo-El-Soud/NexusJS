@@ -11,6 +11,7 @@
 					<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 				<![endif]-->
 				
+				<% title = (typeof title === 'undefined') ? 'Nexus' : title; %>
 				<title><%= title %></title>
 				<meta name="viewport" content="width=device-width, initial-scale=1.0">
 				<!-- load icons -->
@@ -25,6 +26,9 @@
 		</head>
 		<body class="dark" >
 				<%# var val = defineContent('body') || 'dark' %>
+				  <%# include("layouts/modals/signUp",{account: account}) -%>
+				  <%# include("layouts/modals/logIn") -%>
+				
 				<%- include('layouts/header') -%>
 				
 				

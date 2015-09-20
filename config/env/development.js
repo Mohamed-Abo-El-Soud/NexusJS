@@ -20,5 +20,5 @@ var port = normalizePort(process.env.PORT || '3000');
 
 module.exports = {
     port: port,
-    db: 'mongodb://'+port+'/men'
+    db: 'mongodb://'+process.env.IP+'/nexus'
 };

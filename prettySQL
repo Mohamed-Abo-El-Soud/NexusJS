@@ -1,0 +1,2 @@
+echo -e '.mode column\n.headers on\nselect * from Messages;\n' | sqlite3 bin/db.develo
+pment.sqlite | less -S

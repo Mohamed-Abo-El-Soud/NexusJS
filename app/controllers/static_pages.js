@@ -1,7 +1,37 @@
+var actions = {
+    // TODO: do middleware
+    home: function (app, req, res, onSuccess, onError){
+        onSuccess(this);
+        // onSuccess(null);
+        // return null;
+    },
+    about: function (app, req, res, onSuccess, onError){
+        onSuccess(null);
+        return null;
+    },
+    contact: function (app, req, res, onSuccess, onError){
+        onSuccess(null);
+        return null;
+    },
+    help: function (app, req, res, onSuccess, onError){
+        onSuccess(null);
+        return null;
+    }
+}
+
 
 
 module.exports = function(app,action, req, res, next){
-    // TODO: call controller action
-    res.render('static_pages/' + action//, { title: action }
-    );
-}
+    if(actions[action]){
+        actions[action].bind(this)(app, req, res, function(data){
+            // data.accounts = data.account;
+            data.accounts = "moooo!!!!";
+            res.render('static_pages/home', {foo: "bar!!!"});
+            // res.render('static_pages/' + action, {accounts: "moo!!!"}); 
+        }, function(err){
+            next(err);
+        });
+    } else {
+        next();
+    }
+};
