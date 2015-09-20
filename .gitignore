@@ -28,4 +28,4 @@ node_modules
 
 # data directory
 # not needed to be backed up in source control
-da
+#data

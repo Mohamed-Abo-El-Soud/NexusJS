@@ -1,0 +1,35 @@
+<!DOCTYPE html>  
+<html lang="en">  
+
+		<head>
+				<meta charset="utf-8">
+				<meta name="description" content="">
+				<meta name="author" content="">
+		
+				<!-- HTML5 shim, for IE6-8 support of HTML elements -->
+				<!--[if lt IE 9]>
+					<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+				<![endif]-->
+				
+				<% title = (typeof title === 'undefined') ? 'Nexus' : title; %>
+				<title><%= title %></title>
+				<meta name="viewport" content="width=device-width, initial-scale=1.0">
+				<!-- load icons -->
+				<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+				<link rel="stylesheet" href="/stylesheets/style.css">
+				
+				<!-- scripts -->
+				<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+				<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
+				<script src="javascripts/application.js"></script>
+				
+		</head>
+		<body class="dark" >
+				<%# var val = defineContent('body') || 'dark' %>
+				  <%# include("layouts/modals/signUp") -%>
+				  <%- include("layouts/modals/logIn") -%>
+				
+				<%- include('layouts/header') -%>
+				
+				
+				<main class="container text-secondary-light">

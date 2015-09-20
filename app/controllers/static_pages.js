@@ -24,10 +24,7 @@ var actions = {
 module.exports = function(app,action, req, res, next){
     if(actions[action]){
         actions[action].bind(this)(app, req, res, function(data){
-            // data.accounts = data.account;
-            data.accounts = "moooo!!!!";
-            res.render('static_pages/home', {foo: "bar!!!"});
-            // res.render('static_pages/' + action, {accounts: "moo!!!"}); 
+            res.render('static_pages/' + action, data); 
         }, function(err){
             next(err);
         });

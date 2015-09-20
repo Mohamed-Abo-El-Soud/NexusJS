@@ -1,10 +1,11 @@
+<%- include("../layout-top") -%>
+
+
 <!-- if not logged in -->
   <div id="home" class="row valign-wrapper">
   
     <div class="col s12 l12 center-align valign">
-  
-					<% console.log(foo) %>
-					<% throw new Error()%>
+
 					
       <h1 class="huge slab-font hide-on-small-only">Welcome to Nexus</h1>
       <h1 class="slab-font hide-on-med-and-up">Welcome to Nexus</h1>
@@ -25,5 +26,8 @@
     </div>
   
   </div>
-<%- contentFor('title') %>
+  
+<%- include("../layout-bottom") -%>
+
+<%# contentFor('title') %>
 Home

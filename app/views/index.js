@@ -2,7 +2,7 @@
 
 var path = require("path");
 var favicon = require('serve-favicon');
-var expressLayouts = require('express-ejs-layouts');
+// var expressLayouts = require('express-ejs-layouts');
 var express = require('express');
 // importer stuff
 var importer = require("../../importer");
@@ -16,7 +16,7 @@ module.exports = function (app, dirname){
     app.set('view engine', 'ejs');
     
     // allow for layouts
-    app.use(expressLayouts);
+    // app.use(expressLayouts);
     
     // importer stuff cont.
     app.use(importer);
